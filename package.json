@@ -1,0 +1,7 @@
+{
+  "name": "cop.ui",
+  "main": "index.js",
+  "author": "Rasem0n",
+  "license": "ISC",
+  "private": true
+}

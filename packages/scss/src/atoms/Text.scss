@@ -1,0 +1,7 @@
+@import "foundation/all";
+
+@each $key, $value in $fs {
+  .cui-text-#{$key} {
+    font-size: $value;
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "cop.ui",
+  "name": "@cop.ui/core",
   "main": "index.js",
   "author": "Rasem0n",
   "license": "ISC",

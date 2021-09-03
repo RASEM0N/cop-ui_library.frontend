@@ -1,8 +1,7 @@
 import { jsx } from 'react/jsx-runtime';
-import 'react';
 
 const Button = ({ label }) => {
-    return jsx("button", { children: label }, void 0);
+    return jsx("button", Object.assign({ className: "cop-ui-button__container" }, { children: label }), void 0);
 };
 
 export { Button as default };

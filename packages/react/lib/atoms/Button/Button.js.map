@@ -1,1 +1,1 @@
-{"version":3,"file":"Button.js","sources":["../../../src/atoms/Button/Button.tsx"],"sourcesContent":["import React from 'react'\n\ninterface ButtonProps {\n    label: string\n}\n\nconst Button: React.FunctionComponent<ButtonProps> = ({ label }) => {\n    return <button>{label}</button>\n}\n\nexport default Button\n"],"names":["_jsx"],"mappings":";;;MAMM,MAAM,GAAyC,CAAC,EAAE,KAAK,EAAE;IAC3D,OAAOA,0BAAS,KAAK,WAAU,CAAA;AACnC;;;;"}
+{"version":3,"file":"Button.js","sources":[],"sourcesContent":[],"names":[],"mappings":";;;;;;;;"}

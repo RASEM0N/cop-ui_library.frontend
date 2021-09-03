@@ -2,15 +2,44 @@ const fs = require("fs");
 const path = require("path");
 const sass = require("node-sass");
 
-// scss to css
-const css_result = sass.renderSync({
-  data: fs.readFileSync(path.resolve("src/global.scss")).toString(),
-  outputStyle: "expanded",
-  includePaths: [path.resolve("src")],
+const getComponents = () => {
+  let allComponents = [];
+
+  const types = ["atoms", "molecules", "organisms"];
+
+  types.forEach((t) => {
+    const allFiles = fs.readdirSync(`src/${t}`).map((f) => {
+      return {
+        input: `src/${t}/${f}`,
+        output: `src/lib/${t}/${f.slice(0, -4)}css`,
+      };
+    });
+
+    allComponents = [...allComponents, ...allFiles];
+  });
+
+  return allComponents;
+};
+
+const compile = (inputPath, outputPath) => {
+  console.log({
+    from: inputPath,
+    to: outputPath,
+  });
+
+  const css_result = sass
+    .renderSync({
+      data: fs.readFileSync(path.resolve(inputPath)).toString(),
+      outputStyle: "expanded",
+      includePaths: [path.resolve("src")],
+    })
+    .css.toString();
+
+  fs.writeFileSync(path.resolve(outputPath), css_result);
+};
+
+compile("src/global.scss", "src/lib/global.css");
+
+getComponents().forEach((c) => {
+  compile(c.input, c.output);
 });
-
-// console.log(css_result.css)            buffer
-// console.log(css_result.css.toString()) css code
-
-// save css code
-fs.writeFileSync(path.resolve("src/lib/global.css"), css_result.css.toString());

@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "parcel src/index.html -p 3000"
+    "dev": "parcel src/index.html -p 3000"
   },
   "devDependencies": {
     "@types/react": "^17.0.19",

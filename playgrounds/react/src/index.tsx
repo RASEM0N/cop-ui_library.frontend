@@ -1,17 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { Margin, Text } from '@cop.ui/react'
+import { Margin, Select } from '@cop.ui/react'
 
 import '@cop.ui/scss/lib/Margin.css'
 import '@cop.ui/scss/lib/Text.css'
 import '@cop.ui/scss/lib/global.css'
 
+const options = [
+    {
+        label: 'Strict Black',
+        value: 'strict-black',
+    },
+    {
+        label: 'Heavenly Green',
+        value: 'heavenly-green',
+    },
+    {
+        label: 'Sweet Pink',
+        value: 'pink',
+    },
+]
+
 ReactDOM.render(
-    <div>
-        <Margin space={"md"} left={true} top={true}>
-            <Text size="xl">Some Text 123467</Text>
-        </Margin>
-    </div>,
-    document.querySelector('#id'),
+    <Margin space="md" top left>
+        <Select options={options} label="Select" />
+    </Margin>,
+    document.querySelector('#root'),
 )

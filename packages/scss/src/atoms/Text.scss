@@ -1,5 +1,9 @@
 @import "foundation/all";
 
+.cui-text {
+  margin: 0;
+}
+
 @each $key, $value in $fs {
   .cui-text-#{$key} {
     font-size: $value;

@@ -1,0 +1,15 @@
+@import "foundation/all";
+
+$sides: top, right, bottom, left;
+
+@each $key, $value in $spacing {
+  .cui-margin-#{$key} {
+    margin: $value;
+  }
+
+  @each $side in $sides {
+    .cui-margin-#{$side}-#{$key} {
+      margin-#{$side}: $value;
+    }
+  }
+}

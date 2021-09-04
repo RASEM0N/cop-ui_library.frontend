@@ -25,14 +25,14 @@ const options = [
 
 ReactDOM.render(
     <Margin space="md">
-        {/*<Select options={options} label="Select" />*/}
-        <Select
-            options={options}
-            label="Select"
-            renderOptions={({ option, getOptionRecommendedProps }) => {
-                return <p {...getOptionRecommendedProps<HTMLParagraphElement>()}>{option.label}</p>
-            }}
-        />
+        <Select options={options} label="Select" />
+        {/*<Select*/}
+        {/*    options={options}*/}
+        {/*    label="Select"*/}
+        {/*    renderOptions={({ option, getOptionRecommendedProps }) => {*/}
+        {/*        return <p {...getOptionRecommendedProps<HTMLParagraphElement>()}>{option.label}</p>*/}
+        {/*    }}*/}
+        {/*/>*/}
     </Margin>,
     document.querySelector('#root'),
 )

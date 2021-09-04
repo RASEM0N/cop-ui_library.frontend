@@ -2,6 +2,12 @@ import React, { useRef, useState } from 'react'
 import Text from '../../atoms/Text'
 import cn from 'classnames'
 
+interface RenderOptionProps {
+    isSelected: boolean
+    option: SelectOption
+    getOptionRecommendedProps: (overrideProps?: Object) => Object
+}
+
 interface SelectOption {
     label: string
     value: string
@@ -11,12 +17,14 @@ interface SelectProps {
     onOptionSelected?: (option: SelectOption, optionIndex: number) => void
     options?: SelectOption[]
     label?: string
+    renderOptions?: (prop: RenderOptionProps) => React.ReactNode
 }
 
 const Select: React.FunctionComponent<SelectProps> = ({
     onOptionSelected: handler,
     options = [],
     label = 'Please select an option ...',
+    renderOptions,
 }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [selectedIndex, setSelectedIndex] = useState<null | number>(null)
@@ -62,6 +70,26 @@ const Select: React.FunctionComponent<SelectProps> = ({
                 <ul className="cui-select__overlay">
                     {options?.map((op, idx) => {
                         const isSelected = selectedIndex === idx
+
+                        const renderOptionProps = {
+                            option: op,
+                            isSelected,
+                            getOptionRecommendedProps: (overrideProps: {}) => {
+                                return {
+                                    className: cn('cui-select__option', {
+                                        ['cui-select__option--selected']: isSelected,
+                                    }),
+                                    key: op.value,
+                                    onClick: () => onOptionSelected(op, idx),
+                                    ...overrideProps,
+                                }
+                            },
+                        }
+
+                        if (renderOptions) {
+                            return renderOptions(renderOptionProps)
+                        }
+
                         return (
                             <li
                                 className={cn('cui-select__option', {

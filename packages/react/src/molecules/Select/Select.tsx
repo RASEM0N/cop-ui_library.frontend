@@ -46,7 +46,14 @@ const Select: React.FunctionComponent<SelectProps> = ({
 
     return (
         <div className="cui-select">
-            <button ref={labelRef} className="cui-select__label" onClick={() => onLabelClick()}>
+            <button
+                aria-controls="cui-select-list"
+                aria-haspopup={true}
+                aria-expanded={isOpen ? true : undefined}
+                ref={labelRef}
+                className="cui-select__label"
+                onClick={() => onLabelClick()}
+            >
                 <Text>{selectedOptions === null ? label : selectedOptions.label}</Text>
                 <svg
                     className={cn('cui-select__caret', {
@@ -67,7 +74,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
             </button>
 
             {isOpen ? (
-                <ul className="cui-select__overlay">
+                <ul role="menu" id="cui-select-list" className="cui-select__overlay">
                     {options?.map((op, idx) => {
                         const isSelected = selectedIndex === idx
 

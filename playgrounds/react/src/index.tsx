@@ -29,8 +29,8 @@ ReactDOM.render(
         <Select
             options={options}
             label="Select"
-            renderOptions={({option, getOptionRecommendedProps}) => {
-                return <p {...getOptionRecommendedProps()}>{option.label}</p>
+            renderOptions={({ option, getOptionRecommendedProps }) => {
+                return <p {...getOptionRecommendedProps<HTMLParagraphElement>()}>{option.label}</p>
             }}
         />
     </Margin>,

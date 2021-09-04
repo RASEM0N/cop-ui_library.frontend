@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { HTMLProps, useRef, useState } from 'react'
 import Text from '../../atoms/Text'
 import cn from 'classnames'
 
 interface RenderOptionProps {
     isSelected: boolean
     option: SelectOption
-    getOptionRecommendedProps: (overrideProps?: Object) => Object
+    getOptionRecommendedProps: <T extends HTMLElement>(override?: HTMLProps<T>) => HTMLProps<T>
 }
 
 interface SelectOption {
@@ -74,17 +74,17 @@ const Select: React.FunctionComponent<SelectProps> = ({
                         const renderOptionProps = {
                             option: op,
                             isSelected,
-                            getOptionRecommendedProps: (overrideProps: {}) => {
+                            getOptionRecommendedProps: (override?) => {
                                 return {
                                     className: cn('cui-select__option', {
                                         ['cui-select__option--selected']: isSelected,
                                     }),
                                     key: op.value,
                                     onClick: () => onOptionSelected(op, idx),
-                                    ...overrideProps,
+                                    ...override,
                                 }
                             },
-                        }
+                        } as RenderOptionProps
 
                         if (renderOptions) {
                             return renderOptions(renderOptionProps)

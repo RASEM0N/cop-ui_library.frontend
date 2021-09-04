@@ -27,6 +27,26 @@
   }
 }
 
+@mixin padding($space) {
+  padding: map-get($spacing, $space);
+}
+
+@mixin margin($space) {
+  margin: map-get($spacing, $space);
+}
+
+@mixin shadow($type) {
+  box-shadow: map-get($shadows, $type);
+}
+
+@mixin transition($type) {
+  transition: $type $default-duration ease;
+}
+
+@mixin transitionWithDuration($type, $duration) {
+  transition: $type $duration ease;
+}
+
 /*=============================================
 =                 Examples                    =
 =============================================*/

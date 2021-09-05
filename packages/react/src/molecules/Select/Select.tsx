@@ -134,7 +134,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
     }
 
     return (
-        <div className="cui-select">
+        <div data-testId="test_cui-select-button" className="cui-select">
             <button
                 onKeyDown={onButtonKeyDown}
                 aria-controls="cui-select-list"
@@ -176,6 +176,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
                             getOptionRecommendedProps: (override?) => {
                                 return {
                                     ref,
+                                    role: 'menuitemradio',
                                     tabIndex: isHighlighted ? -1 : 0,
                                     className: cn('cui-select__option', {
                                         ['cui-select__option--selected']: isSelected,

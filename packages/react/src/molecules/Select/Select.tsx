@@ -138,7 +138,7 @@ const Select: React.FunctionComponent<SelectProps> = ({
             <button
                 onKeyDown={onButtonKeyDown}
                 aria-controls="cui-select-list"
-                aria-haspopup={true}
+                aria-haspopup
                 aria-expanded={isOpen ? true : undefined}
                 ref={labelRef}
                 className="cui-select__label"
@@ -163,60 +163,65 @@ const Select: React.FunctionComponent<SelectProps> = ({
                 </svg>
             </button>
 
-            {isOpen ? (
-                <ul role="menu" id="cui-select-list" className="cui-select__overlay">
-                    {options?.map((op, idx) => {
-                        const isSelected = selectedIndex === idx
-                        const isHighlighted = highlightedIndex === idx
-                        const ref = optionsRef[idx]
+            <ul
+                role="list"
+                id="cui-select-list"
+                className={cn('cui-select__overlay', {
+                    ['cui-select__overlay--open']: isOpen,
+                })}
+            >
+                {options?.map((op, idx) => {
+                    const isSelected = selectedIndex === idx
+                    const isHighlighted = highlightedIndex === idx
+                    const ref = optionsRef[idx]
 
-                        const renderOptionProps = {
-                            option: op,
-                            isSelected,
-                            getOptionRecommendedProps: (override?) => {
-                                return {
-                                    ref,
-                                    tabIndex: isHighlighted ? -1 : 0,
-                                    className: cn('cui-select__option', {
-                                        ['cui-select__option--selected']: isSelected,
-                                        ['cui-select__option--highlighted']: isHighlighted,
-                                    }),
-                                    onKeyDown: onOptionKeyDown,
-                                    onMouseEnter: () => highLightItem(idx),
-                                    onMouseLeave: () => highLightItem(null),
-                                    onClick: () => onOptionSelected(op, idx),
-                                    key: op.value,
-                                    ...override,
-                                }
-                            },
-                        } as RenderOptionProps
+                    const renderOptionProps = {
+                        option: op,
+                        isSelected,
+                        getOptionRecommendedProps: (override?) => {
+                            return {
+                                ref,
+                                role: 'listitem',
+                                tabIndex: isHighlighted ? -1 : 0,
+                                className: cn('cui-select__option', {
+                                    ['cui-select__option--selected']: isSelected,
+                                    ['cui-select__option--highlighted']: isHighlighted,
+                                }),
+                                onKeyDown: onOptionKeyDown,
+                                onMouseEnter: () => highLightItem(idx),
+                                onMouseLeave: () => highLightItem(null),
+                                onClick: () => onOptionSelected(op, idx),
+                                key: op.value,
+                                ...override,
+                            }
+                        },
+                    } as RenderOptionProps
 
-                        if (renderOptions) {
-                            return renderOptions(renderOptionProps)
-                        }
+                    if (renderOptions) {
+                        return renderOptions(renderOptionProps)
+                    }
 
-                        return (
-                            <li {...renderOptionProps.getOptionRecommendedProps<HTMLLIElement>()}>
-                                <Text size="base">{op.label}</Text>{' '}
-                                {isSelected ? (
-                                    <svg
-                                        width="1rem"
-                                        height="1rem"
-                                        fill="none"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                    >
-                                        <path d="M5 13l4 4L19 7" />
-                                    </svg>
-                                ) : null}
-                            </li>
-                        )
-                    })}
-                </ul>
-            ) : null}
+                    return (
+                        <li {...renderOptionProps.getOptionRecommendedProps<HTMLLIElement>()}>
+                            <Text size="base">{op.label}</Text>{' '}
+                            {isSelected ? (
+                                <svg
+                                    width="1rem"
+                                    height="1rem"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path d="M5 13l4 4L19 7" />
+                                </svg>
+                            ) : null}
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

@@ -5,10 +5,15 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "dev": "yarn build --watch"
+    "dev": "yarn build --watch",
+    "start-storybook": "start-storybook",
+    "build-storybook": "build-storybook"
   },
   "devDependencies": {
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^6.3.8",
     "@types/react": "^17.0.19",
+    "babel-loader": "^8.2.2",
     "react": "^17.0.2",
     "rollup": "^2.56.3",
     "rollup-plugin-typescript": "^1.0.1",

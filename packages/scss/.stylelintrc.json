@@ -1,10 +1,14 @@
 {
   "plugins": [
-    "stylelint-prettier"
+    "stylelint-scss"
   ],
   "extends": [
-    "stylelint-config-sass-guidelines",
-    "stylelint-config-prettier",
-    "stylelint-prettier/recommended"
-  ]
+    "stylelint-config-recommended-scss"
+  ],
+  "rules": {
+    "indentation": [
+      "tab"
+    ],
+    "color-hex-case": "upper"
+  }
 }

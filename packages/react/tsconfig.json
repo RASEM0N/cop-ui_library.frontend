@@ -16,6 +16,9 @@
     "noUnusedParameters": true,
     "declaration": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "isolatedModules": false,
+    "pretty": true
   },
   "include": [
     "src"
@@ -23,5 +26,5 @@
   "exclude": [
     "node_modules",
     "lib"
-  ],
+  ]
 }

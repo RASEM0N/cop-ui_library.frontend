@@ -1,0 +1,76 @@
+@import "foundation/all";
+
+.cui-select {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include padding("xs");
+    border: 1px solid $form-border-color;
+    background-color: $form-bg-color;
+
+    font-family: $body-font-family;
+    cursor: pointer;
+  }
+
+  &__overlay {
+    @include padding("none");
+    @include margin("none");
+
+    @include shadow("base");
+    box-sizing: border-box;
+    border: 1px solid $form-border-color;
+    background-color: $form-bg-color;
+    list-style: none;
+    display: none;
+
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 10px);
+
+    width: 100%;
+  }
+
+  &__overlay--open {
+    display: block;
+  }
+
+  &__option {
+    @include padding("xxs");
+    @include transition(background-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+  }
+
+  // вместо :hover
+  &__option--highlighted {
+    background-color: $form-bg-color-hover;
+  }
+
+  &__option--selected {
+    background-color: $form-bg-option-selected;
+    color: $form-color-option-selected;
+  }
+
+  &__caret {
+    @include transition(transform);
+  }
+
+  &__caret--open {
+    transform: rotate(180deg);
+  }
+
+  &__caret--closed {
+    transform: rotate(0deg);
+  }
+}

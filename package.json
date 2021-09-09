@@ -1,7 +1,24 @@
 {
-  "name": "cop.ui",
+  "name": "@cop.ui/core",
+  "version": "1.0.0",
   "main": "index.js",
   "author": "Rasem0n",
-  "license": "ISC",
-  "private": true
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "yarn lerna run build",
+    "dev": "yarn lerna run dev"
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "playgrounds/*"
+    ],
+    "nohoist": [
+      "**/normalize-scss"
+    ]
+  }
 }

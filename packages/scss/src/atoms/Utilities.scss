@@ -1,0 +1,12 @@
+@import "foundation/all";
+
+// [key]: value
+@each $key, $value in $spacing {
+  .cui-width-#{$key} {
+    width: $value;
+  }
+
+  .cui-height-#{$key} {
+    height: $value;
+  }
+}

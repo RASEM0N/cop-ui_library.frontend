@@ -1,0 +1,32 @@
+:root {
+  --cui-body-text-color: #{$dark};
+  --cui-body-bg-color: #{$white};
+
+  --cui-btn-primary-color: #{$white};
+  --cui-btn-primary-bg: #{$green};
+  --cui-btn-primary-bg-hover: #{$green-light};
+
+  --cui-form-color: #{$dark};
+  --cui-form-bg: #{$white};
+  --cui-form-error-color: #{$red};
+  --cui-form-error-borderr: #{$red};
+  --cui-form-border-focus-colo: #{$green};
+
+  --cui-body-font-family: #{$ff-playfair};
+  --cui-body-font-size: #{$fs-sm};
+  --cui-body-font-weight: #{$fw-normal};
+
+  --cui-h1-font-size: #{$h-1};
+  --cui-h2-font-size: #{$h-2};
+  --cui-h3-font-size: #{$h-3};
+  --cui-h4-font-size: #{$h-4};
+  --cui-h5-font-size: #{$h-5};
+  --cui-h6-font-size: #{$h-6};
+
+  --cui-h1-text-weight: #{$fw-black};
+  --cui-h2-text-weight: #{$fw-semibold};
+  --cui-h3-text-weight: #{$fw-bold};
+  --cui-h4-text-weight: #{$fw-medium};
+  --cui-h5-text-weight: #{$fw-normal};
+  --cui-h6-text-weight: #{$fw-light};
+}
